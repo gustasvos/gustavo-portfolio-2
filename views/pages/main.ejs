@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Gustavo</title>
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+
+    <!-- fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="static/css/normalize.css">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="0" tabindex="0">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" id="home" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="sobre-mim" href="/sobre">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="disciplinas" href="/disciplinas">Disciplinas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="projetos" href="/projetos">Projetos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="dashboard" href="/dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contato" href="/contatos">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="teste" href="/teste">index teste</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main container-fluid">
+        <%- body %>
+    </main>
+
+    <footer class="text-center py-2">
+        <div class="container">
+            <div class="social-icons d-flex justify-content-center">
+                <a href="https://www.linkedin.com/in/gustavo-rosa-46a251180/" target="_blank" class="mx-3">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/gustasvos" target="_blank" class="mx-3">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

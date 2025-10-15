@@ -1,0 +1,16 @@
+<% layout('./main') %>
+
+    <section class="projects" id="disciplinas">
+        <h1 class="title">Projetos</h1>
+
+        <% disciplinas.forEach(disciplina=> { %>
+            <article class="project">
+                <h1>
+                    <%= disciplina.nome %>
+                </h1>
+                <p class="text-break">
+                    <%= disciplina.cargaHoraria %>
+                </p>
+            </article>
+            <% }) %>
+    </section>

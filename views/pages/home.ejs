@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('../partials/header') %> <!-- Inclui o conteúdo do header -->
+
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="0" tabindex="0">
+
+    <%- include('../partials/navbar') %> <!-- Inclui a navbar -->
+
+    <main class="main container-fluid">
+        <section class="disciplinas">
+            <h1>Disciplinas</h1>
+            <ul>
+                <% disciplinas.forEach(function(disciplina) { %>
+                    <li><%= disciplina.nome %> - <%= disciplina.cargaHoraria %> horas</li>
+                <% }) %>
+            </ul>
+        </section>
+    </main>
+
+    <%- include('../partials/footer') %> <!-- Inclui o footer -->
+
+</body>
+
+</html>
+
+
+<!-- views/pages/home.ejs -->
+<h1 class="text-center mt-5">Bem-vindo ao meu portfólio!</h1>
+<p class="text-center fs-4">
+    Olá, meu nome é <strong>Gustavo Ribeiro da Rosa</strong> e sou estudante de programação. 
+    Aqui você poderá conhecer mais sobre minhas habilidades, projetos e trajetória.
+</p>
+<div class="text-center">
+    <a href="/sobre" class="btn btn-primary">Saiba mais sobre mim</a>
+</div>
