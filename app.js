@@ -44,8 +44,8 @@ let disciplinas = [
 ]
 
 let contatos = [
-    { texto: 'Email: gustavo@example.com' },
-    { texto: 'Número: (11) 91234-5678' },
+    { texto: 'Email: gustavorib.rosa@gmail.com' },
+    { texto: 'Número: (11) 11111-1111' },
     { texto: 'GitHub: https://github.com/gustasvos' }
 ]
 
@@ -176,7 +176,7 @@ app.delete('/projetos/:index', (req, res) => {
 
     if (index >= 0 && index < projetos.length) {
         projetos.splice(index, 1)
-        res.json({ message: `Projeto no índice ${index} removido com sucesso.` })
+        res.json({ message: `Projeto ${projetos[index].nome} removido com sucesso.` })
     } else {
         res.status(404).json({ message: 'Índice inválido ou projeto não encontrado' })
     }
@@ -185,6 +185,10 @@ app.delete('/projetos/:index', (req, res) => {
 
 app.get('/contatos', (req, res) => {
     res.render('pages/contatos', { contatos: contatos })
+})
+
+app.get('/contatos-json', (req, res) => {
+    res.json(contatos)
 })
 
 app.post('/contatos', (req, res) => {

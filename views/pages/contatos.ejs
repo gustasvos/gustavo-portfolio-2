@@ -1,13 +1,12 @@
 <% layout('./main') %>
 
-<section class="projects" id="disciplinas">
-    <h1 class="title">Projetos</h1>
-
-    <% contatos.forEach(contato => { %>
-        <article class="project">
-            <h1>
-                <%= contato.texto %>
-            </h1>
-        </article>
-        <% }) %>
+<section class="contatos-section">
+  <h1 class="title">Contatos</h1>
+  <article class="contatos-card">
+    <ul>
+      <% contatos.forEach(contato => { %>
+        <li><%= contato.texto %></li>
+      <% }) %>
+    </ul>
+  </article>
 </section>
