@@ -1,16 +1,18 @@
 <% layout('./main') %>
 
-    <section class="projects" id="disciplinas">
-        <h1 class="title">Projetos</h1>
+    <section class="disciplinas-section" id="disciplinas">
+        <h1 class="title">Disciplinas</h1>
 
-        <% disciplinas.forEach(disciplina=> { %>
-            <article class="project">
-                <h1>
-                    <%= disciplina.nome %>
-                </h1>
-                <p class="text-break">
-                    <%= disciplina.cargaHoraria %>
-                </p>
-            </article>
-            <% }) %>
+        <div class="disciplinas-grid">
+            <% disciplinas.forEach(disciplina=> { %>
+                <article class="disciplina-card">
+                    <h1>
+                        <%= disciplina.nome %>
+                    </h1>
+                    <p>
+                        Professor: <%= disciplina.professor %>
+                    </p>
+                </article>
+                <% }) %>
+        </div>
     </section>
