@@ -162,6 +162,7 @@ main {
     grid-template-columns: 1fr 1fr;
     padding: 2.5rem;
     padding-right: 2.5rem;
+    gap: 1.5rem;
 
     div > img {
         width: 100%;
@@ -189,6 +190,11 @@ main {
         display: block;
         text-align: center;
     }
+}
+
+.main > .projects .project.full-width {
+    grid-column: 1 / -1;
+    margin-right: 0;
 }
  
 .main .project {

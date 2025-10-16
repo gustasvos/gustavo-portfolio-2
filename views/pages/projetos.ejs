@@ -3,29 +3,23 @@
 <section class="projects" id="projects">
     <h1 class="title">Projetos</h1>
 
-    <% projetos.forEach(projeto=> { %>
-        <article class="project">
-            <h1>
-                <%= projeto.nome %>
-            </h1>
-            <p class="text-break">
-                <%= projeto.descricao %>
-            </p>
-            <p class="text-break"><strong>Hard Skills: </strong>
-                <%= projeto.hardSkills %>
-            </p>
-            <p class="text-break"><strong>Soft Skills: </strong>
-                <%= projeto.softSkills %>
-            </p>
+    <% projetos.forEach(projeto => { %>
+        <article class="project <%= !projeto.videoLink ? 'full-row' : '' %>">
+            <h1><%= projeto.nome %></h1>
+            <p class="text-break"><%= projeto.descricao %></p>
+            <p class="text-break"><strong>Hard Skills: </strong><%= projeto.hardSkills %></p>
+            <p class="text-break"><strong>Soft Skills: </strong><%= projeto.softSkills %></p>
             <a href="<%= projeto.repoLink %>" target="_blank">
                 <img src="https://img.icons8.com/color-glass/64/github--v1.png" alt="repository" width="64" height="64">
             </a>
         </article>
 
-        <div class="container-fluid">
-            <video controls>
-                <source src="<%= projeto.videoLink %>" type="video/mp4">
-            </video>
-        </div>
-        <% }) %>
+        <% if (projeto.videoLink) { %>
+            <div class="container-fluid">
+                <video controls>
+                    <source src="<%= projeto.videoLink %>" type="video/mp4">
+                </video>
+            </div>
+        <% } %>
+    <% }) %>
 </section>
