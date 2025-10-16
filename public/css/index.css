@@ -311,6 +311,50 @@ main {
 }
 
 
+/* DASHBOARD */
+
+.dashboard {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.stats-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+}
+
+
+.stat-card {
+  background: #04032b;
+  border-radius: 0.375rem;
+  padding: 2rem;
+  color: whitesmoke;
+  flex: 1 1 250px;
+  text-align: center;
+}
+
+.stat-card h1 {
+  color: #6082B6;
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+}
+
+.stat-card p {
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+
 /* footer */
 
 footer {

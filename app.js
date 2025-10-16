@@ -246,13 +246,14 @@ app.delete('/sobre', (req, res) => {
     res.sendStatus(204)
 })
 
-app.get('/teste', (req, res) => {
-    res.render('index')
-})
-
 app.get('/dashboard', (req, res) => {
-    res.render('dashboard')
-})
+  res.render('pages/dashboard', {
+    totalDisciplinas: disciplinas.length,
+    totalProjetos: projetos.length,
+    totalContatos: contatos.length
+  });
+});
+
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`)
