@@ -1,12 +1,15 @@
-body {
-    /* background: linear-gradient(180deg, #201e60, #000b81, #201e60); */
-    background: #201e60;
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #201e60;
+  font-family: "Funnel Display", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
 
-    /* apliquei a fonte no site todo */
-    font-family: "Funnel Display", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: normal;
-    font-style: normal;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -21,7 +24,9 @@ body {
 
 /* pra navbar não ocupar espaço da tela */
 main {
+    flex: 1;
     padding-top: 3%;
+    /* height: 100%; */
 }
 
 .navbar-nav {
@@ -39,7 +44,7 @@ main {
 }
 
 .nav-link.active {
-    color: #8B0000;
+    color: #201e60;
 }
 
 .nav-link:hover {
@@ -53,7 +58,7 @@ main {
     /* background: #201e60; */
     margin-top: 5vh;
 
-    height: 100%;
+    /* height: 100%; */
     
     /* container da imagem */
     aside {
@@ -82,6 +87,56 @@ main {
     }
  
 }
+
+/* NOVO GRID DE DISCIPLINAS */
+.disciplinas-section {
+    padding: 2.5rem;
+}
+
+.disciplinas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.disciplina-card {
+    background-color: #04032b;
+    padding: 1.5rem;
+    border-radius: 0.375rem;
+    color: whitesmoke;
+}
+
+.disciplina-card h1 {
+    font-size: 1.5rem;
+    color: #7ab6f2;
+    margin-bottom: 0.5rem;
+}
+
+.disciplina-card p {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* TEXTO CENTRALIZADO NA HOME */
+
+.about-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; /* ou 80vh para preencher boa parte da tela */
+  text-align: center;
+  padding: 0 20px;
+}
+
+.about-home p {
+  font-size: 3rem;
+  color: whitesmoke;
+  font-weight: 600;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
 
 
 .main > .skills {
@@ -190,6 +245,10 @@ footer {
     color: #ffffff;
     padding-top: 5px;
     padding-bottom: 5px;
+    /* position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0; */
 }
 
 .social-icons {
@@ -205,11 +264,11 @@ footer {
 }
 
 .social-icons a:hover {
-    color: #ff4500 !important;
+    color: #201e60 !important;
 }
 
 .social-icons a:active {
-    color: #8B0000;
+    color: #201e60;
 }
 
 
