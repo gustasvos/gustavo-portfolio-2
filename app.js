@@ -15,6 +15,12 @@ app.use(express.static('public'))
 app.use(express.json())
 app.use(bodyParser.json());
 
+let boasvindas = `
+        Olá! Me chamo Gustavo Ribeiro da Rosa
+        <br />
+        Seja bem vindo ao meu portfolio acadêmico!
+    `
+
 let descricao = `
         Meu nome é Gustavo Ribeiro da Rosa sou estudante de programação de São José dos Campos-SP. Gosto de
         estudar principalmente tecnologias para desenvolvimento Web e Banco de Dados e desejo me especializar
@@ -29,9 +35,12 @@ let descricao = `
     `
 
 let disciplinas = [
-    { nome: 'Programação Web', cargaHoraria: 60 },
-    { nome: 'Banco de Dados', cargaHoraria: 80 },
-    { nome: 'Algoritmos e Estruturas de Dados', cargaHoraria: 100 }
+    { nome: 'Banco de Dados Relacional', professor: "Juliana" },
+    { nome: 'Estrutura de Dados', professor: "Fernando Masanori" },
+    { nome: 'Desenvolvimento Web II', professor: "Cláudio" },
+    { nome: 'Matemática para Computação', professor: "Reinaldo Arakaki" },
+    { nome: 'Engenharia de Software II', professor: "José Walmir" },
+    { nome: 'Técnicas de Programação I', professor: "Gerson" },
 ]
 
 let contatos = [
@@ -40,20 +49,15 @@ let contatos = [
     { texto: 'GitHub: https://github.com/gustasvos' }
 ]
 
-// let descricao = [
-//     { nome: 'Programação Web', cargaHoraria: 60 },
-//     { nome: 'Banco de Dados', cargaHoraria: 80 },
-//     { nome: 'Algoritmos e Estruturas de Dados', cargaHoraria: 100 }
-// ]
 
 let projetos = [
     {
         nome: 'Análise de Dados do Comércio Internacional do Estado de São Paulo',
-        descricao: `Este projeto visa desenvolver um site que forneça através de gráficos, os dados disponíveis na base do Comex Stat do Ministério do Desenvolvimento, Indústria, Comércio e Serviços sobre as exportações e importações realizadas no estado de São Paulo ao longo dos anos. A partir deste, deverá ser possível identificar cenários de ascenção, estagnação ou declínio de municípios e/ou produtos no mercado internacional. Para o projeto a equipe utilizou as tecnologias Python, Flask, Pandas, Google Colab e Figma.`,
+        descricao: `(Realizado em equipe) Este projeto visa desenvolver um site que forneça através de gráficos, os dados disponíveis na base do Comex Stat do Ministério do Desenvolvimento, Indústria, Comércio e Serviços sobre as exportações e importações realizadas no estado de São Paulo ao longo dos anos. A partir deste, deverá ser possível identificar cenários de ascenção, estagnação ou declínio de municípios e/ou produtos no mercado internacional. Para o projeto a equipe utilizou as tecnologias Python, Flask, Pandas, Google Colab e Figma.`,
         hardSkills: 'Python (Flask e Pandas), HTML, CSS e MySQL.',
         softSkills: 'Metodologia Ágil, Autogerenciamento, Colaboração e Comunicação ativa.',
         repoLink: 'https://github.com/arthur-oliver/API-Crows',
-        videoLink: 'static/assets/site-graficos.mp4'
+        videoLink: '/assets/site-graficos.mp4'
     },
     {
         nome: 'Members Only',
@@ -61,7 +65,7 @@ let projetos = [
         hardSkills: 'Ruby, Ruby on Rails, HTML e Bootstrap.',
         softSkills: 'Autonomia e Comunicação ativa (recebendo feedbacks e implementando alterações).',
         repoLink: 'https://github.com/gustasvos/members-only',
-        videoLink: 'static/assets/members-only.mp4'
+        videoLink: '/assets/members-only.mp4'
     },
     {
         nome: 'WeatherAPI',
@@ -69,12 +73,18 @@ let projetos = [
         hardSkills: 'Ruby, Ruby on Rails, HTML e Bootstrap.',
         softSkills: 'Autonomia.',
         repoLink: 'https://github.com/gustasvos/weather-api',
-        videoLink: 'static/assets/wheaterapi.mkv'
+        videoLink: '/assets/wheaterapi.mkv'
     }
 ]
 
+// DISCIPLINAS
+
 app.get('/disciplinas', (req, res) => {
     res.render('pages/disciplinas', { disciplinas: disciplinas })
+})
+
+app.get('/disciplinas-json', (req, res) => {
+    res.json(disciplinas)
 })
 
 app.post('/disciplinas', (req, res) => {
@@ -83,31 +93,64 @@ app.post('/disciplinas', (req, res) => {
     res.json(newItem)
 })
 
-app.put('/disciplinas/:id', (req, res) => {
-    const id = parseInt(req.params.id)
+app.put('/disciplinas/:index', (req, res) => {
+    const index = parseInt(req.params.index)
     const updatedItem = req.body
-    const i = disciplinas.findIndex(item => item.id === id)
-    if (i >= 0) {
-        disciplinas[i] = updatedItem
+
+    if (index >= 0 && index < disciplinas.length) {
+        disciplinas[index] = updatedItem
         res.json(updatedItem)
     } else {
-        res.status(404).json({ message: 'Disciplina não encontrada' })
+        res.status(404).json({ message: 'Índice inválido ou disciplina não encontrada' })
     }
 })
 
-app.delete('/disciplinas/:id', (req, res) => {
-    const id = parseInt(req.params.id)
-    const i = disciplinas.findIndex(item => item.id === id)
-    if (i >= 0) {
-        disciplinas.splice(i, 1)
-        res.sendStatus(204)
+app.delete('/disciplinas/:index', (req, res) => {
+    const index = parseInt(req.params.index)
+    
+    if (index >= 0 && index < disciplinas.length) {
+        const removed = disciplinas.splice(index, 1)[0]
+        res.status(200).json({ message: `Disciplina ${removed.nome} removida com sucesso.` })
     } else {
-        res.status(404).json({ message: 'Disciplina não encontrada' })
+        res.status(404).json({ message: 'Índice inválido' })
     }
 })
+
+
+
+// app.put('/disciplinas/:id', (req, res) => {
+//     const id = parseInt(req.params.id)
+//     const updatedItem = req.body
+//     const i = disciplinas.findIndex(item => item.id === id)
+//     if (i >= 0) {
+//         disciplinas[i] = updatedItem
+//         res.json(updatedItem)
+//     } else {
+//         res.status(404).json({ message: 'Disciplina não encontrada' })
+//     }
+// })
+
+
+// app.delete('/disciplinas/:id', (req, res) => {
+//     const id = parseInt(req.params.id)
+//     const i = disciplinas.findIndex(item => item.id === id)
+//     if (i >= 0) {
+//         const removed = disciplinas.splice(i, 1)[0]
+//         res.status(200).json({ message: `Disciplina ${removed.nome} removida com sucesso.` })
+//     } else {
+//         res.status(404).json({ message: 'Disciplina não encontrada' })
+//     }
+// })
+
+
+// PROJETOS
 
 app.get('/projetos', (req, res) => {
     res.render('pages/projetos', { projetos: projetos })
+})
+
+app.get('/projetos-json', (req, res) => {
+    res.json(projetos)
 })
 
 app.post('/projetos', (req, res) => {
@@ -116,28 +159,29 @@ app.post('/projetos', (req, res) => {
     res.json(newItem)
 })
 
-app.put('/projetos/:id', (req, res) => {
-    const id = parseInt(req.params.id)
+app.put('/projetos/:index', (req, res) => {
+    const index = parseInt(req.params.index)
     const updatedItem = req.body
-    const i = projetos.findIndex(item => item.id === id)
-    if (i >= 0) {
-        projetos[i] = updatedItem
+
+    if (index >= 0 && index < projetos.length) {
+        projetos[index] = updatedItem
         res.json(updatedItem)
     } else {
-        res.status(404).json({ message: 'Projeto não encontrado' })
+        res.status(404).json({ message: 'Índice inválido ou projeto não encontrado' })
     }
 })
 
-app.delete('/projetos/:id', (req, res) => {
-    const id = parseInt(req.params.id)
-    const i = projetos.findIndex(item => item.id === id)
-    if (i >= 0) {
-        projetos.splice(i, 1)
-        res.sendStatus(204)
+app.delete('/projetos/:index', (req, res) => {
+    const index = parseInt(req.params.index)
+
+    if (index >= 0 && index < projetos.length) {
+        projetos.splice(index, 1)
+        res.json({ message: `Projeto no índice ${index} removido com sucesso.` })
     } else {
-        res.status(404).json({ message: 'Projeto não encontrado' })
+        res.status(404).json({ message: 'Índice inválido ou projeto não encontrado' })
     }
 })
+
 
 app.get('/contatos', (req, res) => {
     res.render('pages/contatos', { contatos: contatos })
@@ -149,29 +193,33 @@ app.post('/contatos', (req, res) => {
     res.json(newItem)
 })
 
-app.put('/contatos/:id', (req, res) => {
-    const id = parseInt(req.params.id)
+app.put('/contatos/:index', (req, res) => {
+    const index = parseInt(req.params.index)
     const updatedItem = req.body
-    const i = contatos.findIndex(item => item.id === id)
-    if (i >= 0) {
-        contatos[i] = updatedItem
+
+    if (index >= 0 && index < contatos.length) {
+        contatos[index] = updatedItem
         res.json(updatedItem)
     } else {
         res.status(404).json({ message: 'Contato não encontrado' })
     }
 })
 
-app.delete('/contatos/:id', (req, res) => {
-    const id = parseInt(req.params.id)
-    const i = contatos.findIndex(item => item.id === id)
-    if (i >= 0) {
-        contatos.splice(i, 1)
-        res.sendStatus(204)
+app.delete('/contatos/:index', (req, res) => {
+    const index = parseInt(req.params.index)
+
+    if (index >= 0 && index < contatos.length) {
+        contatos.splice(index, 1)
+        res.json({ message: `Contato no índice ${index} removido com sucesso.` })
     } else {
         res.status(404).json({ message: 'Contato não encontrado' })
     }
 })
 
+
+app.get('/', (req, res) => {
+    res.render('pages/home', { boasvindas })
+})
 
 app.get('/sobre', (req, res) => {
     res.render('pages/sobre', { descricao })
