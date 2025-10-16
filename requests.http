@@ -108,3 +108,19 @@ Content-Type: application/json
 
 ### Deletar contato pelo índice (ex: índice 0)
 DELETE http://localhost:3050/contatos/0
+
+### Atualiza texto de boas vindas
+PUT http://localhost:3050/
+Content-Type: application/json
+
+{
+  "boasvindas": "TEXTO NOVO"
+}
+
+### Adiciona texto de boas vindas
+POST http://localhost:3050/
+Content-Type: application/json
+
+{
+  "boasvindas": "TEXTO NOVO"
+}

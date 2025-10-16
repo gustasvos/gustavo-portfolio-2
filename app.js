@@ -220,10 +220,26 @@ app.delete('/contatos/:index', (req, res) => {
     }
 })
 
+// HOME
 
 app.get('/', (req, res) => {
     res.render('pages/home', { boasvindas })
 })
+
+app.post('/', (req, res) => {
+    const newItem = req.body.boasvindas
+    boasvindas = newItem
+    res.json({ boasvindas })
+})
+
+app.put('/', (req, res) => {
+    const newItem = req.body.boasvindas
+    boasvindas = newItem
+    res.json({ boasvindas })
+})
+
+
+// SOBRE
 
 app.get('/sobre', (req, res) => {
     res.render('pages/sobre', { descricao })
