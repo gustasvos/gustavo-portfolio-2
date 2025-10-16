@@ -1,0 +1,110 @@
+# -----------------------------
+# DISCIPLINAS
+# -----------------------------
+
+### Listar todas as disciplinas
+GET http://localhost:3050/disciplinas-json
+Accept: application/json
+
+###
+
+### Adicionar nova disciplina
+POST http://localhost:3050/disciplinas
+Content-Type: application/json
+
+{
+  "nome": "Banco de Dados Não Relacional",
+  "professor": "Diogo Branquinho"
+}
+
+###
+
+### Atualizar disciplina pelo índice (ex: índice 1)
+PUT http://localhost:3050/disciplinas/5
+Content-Type: application/json
+
+{
+  "nome": "Desenvolvimento Web III",
+  "professor": "Gerson da Penha Neto"
+}
+
+###
+
+### Deletar disciplina pelo índice (ex: índice 1)
+DELETE http://localhost:3050/disciplinas/1
+
+# -----------------------------
+# PROJETOS
+# -----------------------------
+
+### Listar todos os projetos
+GET http://localhost:3050/projetos-json
+Accept: application/json
+
+###
+
+### Adicionar novo projeto
+POST http://localhost:3050/projetos
+Content-Type: application/json
+
+{
+  "nome": "CRM Newe - API 2025.2",
+  "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "hardSkills": "Typescript, TypeORM, React, Tailwind",
+  "softSkills": "Metodologia Ágil (SCRUM), Autogerenciamento, Colaboração e Comunicação ativa.",
+  "repoLink": "https://github.com/gustasvos/kingfisher-fatec-api",
+  "videoLink": ""
+}
+
+###
+
+### Atualizar projeto pelo índice (ex: índice 0)
+PUT http://localhost:3050/projetos/0
+Content-Type: application/json
+
+{
+  "nome": "Projeto de Exemplo Atualizado",
+  "descricao": "Descrição atualizada com lorem ipsum.",
+  "hardSkills": "Ruby, Rails, JavaScript",
+  "softSkills": "Comunicação",
+  "repoLink": "https://github.com/exemplo/projeto",
+  "videoLink": ""
+}
+
+###
+
+### Deletar projeto pelo índice (ex: índice 0)
+DELETE http://localhost:3050/projetos/0
+
+# -----------------------------
+# CONTATOS
+# -----------------------------
+
+### Listar todos os contatos
+GET http://localhost:3050/contatos-json
+Accept: application/json
+
+###
+
+### Adicionar novo contato
+POST http://localhost:3050/contatos
+Content-Type: application/json
+
+{
+  "texto": "LinkedIn: https://www.linkedin.com/in/gustavo-rosa-46a251180/"
+}
+
+###
+
+### Atualizar contato pelo índice (ex: índice 0)
+PUT http://localhost:3050/contatos/0
+Content-Type: application/json
+
+{
+  "texto": "Email atualizado: gustavo.rosa5@fatec.sp.gov.br"
+}
+
+###
+
+### Deletar contato pelo índice (ex: índice 0)
+DELETE http://localhost:3050/contatos/0
